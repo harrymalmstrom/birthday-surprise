@@ -136,6 +136,13 @@ function nextSlide() {
     // ändrar bakgrund
     const colors = ["#ffe6f0", "#e6f7ff", "#e6ffe6", "#fff0cc"];
     document.body.style.backgroundColor = colors[currentSlide];
+    const nextButton = document.querySelector("#slideshow > button");
+
+    if (currentSlide === slides.length - 1) {
+        nextButton.style.display = "none";
+    } else {
+        nextButton.style.display = "block";
+    }
 
 }
 function restartSlideshow() {
