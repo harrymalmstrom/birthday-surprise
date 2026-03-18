@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Grattis Älskling</title>
+<style>
+body {
+    text-align: center;
+    background-color: #ffe6f0;
+    font-family: Arial; 
+}
+button {
+    font-size: 20px;
+    padding: 15px 30px;
+    display: block;
+    margin: 20px auto;
+    position: relative;
+    z-index: 10;
+}
+img {
+     width: 90%;
+     max-width: 400px;
+      border-radius: 15px;
+}
+.slide {
+    opacity: 0;
+    transition: opacity 1s ease;
+    position: absolute;
+    width: 100%;
+}
+
+.slide.active {
+    opacity: 1;
+    position: relative;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+    <div id="startScreen">
+        <h2>Klicka här för en överraskning</h2>
+    <button onclick="startSlideshow()"> Klicka här! </button>
+    <img src="Bild1.jpg" width="300">
+    </div>
+        <div id="slideshow" style="display: none;">
+
+    <div class="slide">
+        <h1>Grattis på födelsedagen </h1>
+        <img src="Bild2.jpg">
+    </div>
+
+    <div class="slide">
+        <h1>Jag älskar dig </h1>
+        <img src="Bild3.jpg">
+    </div>
+
+    <div class="slide">
+        <h1>Du betyder allt för mig </h1>
+        <img src="Bild4.jpg">
+    </div>
+
+    <button onclick="nextSlide()">Nästa </button>
+
+</div>
+    
+    <script>
+
+let currentSlide = 0;
+const slides = document.getElementsByClassName("slide");
+
+function startSlideshow() {
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("slideshow").style.display = "block";
+
+    slides[0].classList.add("active");
+}
+
+function nextSlide() {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = currentSlide + 1;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add("active");
+
+    // ändrar bakgrund
+    const colors = ["#ffe6f0", "#e6f7ff", "#e6ffe6"];
+    document.body.style.backgroundColor = colors[currentSlide];
+}
+
+</script>
+</body>
+</html>
+
