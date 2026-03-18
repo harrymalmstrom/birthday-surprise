@@ -114,6 +114,7 @@ h2 {
 
 let currentSlide = 0;
 const slides = document.getElementsByClassName("slide");
+let heartInterval = null;
 
 function startSlideshow() {
     document.getElementById("startScreen").style.display = "none";
@@ -127,8 +128,8 @@ function nextSlide() {
 
     currentSlide = currentSlide + 1;
 
-    if (currentSlide === slides.length - 1) {
-        setInterval(createHeart, 300);
+    if (currentSlide === slides.length - 1 && !heartInterval) {
+        heartInterval = setInterval(createHeart, 300);
     }
 
     slides[currentSlide].classList.add("active");
@@ -153,6 +154,8 @@ function restartSlideshow() {
     slides[currentSlide].classList.add("active");
 
     document.body.style.backgroundColor = "#ffe6f0";
+    clearInterval(heartInterval);
+    heartInterval = null;
 }
 function createHeart() {
     const heart = document.createElement("div");
