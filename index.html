@@ -41,6 +41,9 @@ h1 {
 h2 {
     font-size: 22px;
 }
+.slide:last-child h1 {
+    font-size: 32px;
+}
 
 </style>
 
@@ -69,6 +72,11 @@ h2 {
         <h1>Du betyder allt för mig </h1>
         <img src="Bild4.jpg">
     </div>
+    <div class="slide">
+    <h1>Jag älskar dig mest av allt </h1>
+    <p>Hoppas du får världens bästa dag!</p>
+    <button onclick="restartSlideshow()">Börja om</button>
+    </div>
 
     <button onclick="nextSlide()">Mer kärlek </button>
 
@@ -92,14 +100,24 @@ function nextSlide() {
     currentSlide = currentSlide + 1;
 
     if (currentSlide >= slides.length) {
-        currentSlide = 0;
+        currentSlide = slides.length - 1;
     }
 
     slides[currentSlide].classList.add("active");
 
     // ändrar bakgrund
-    const colors = ["#ffe6f0", "#e6f7ff", "#e6ffe6"];
+    const colors = ["#ffe6f0", "#e6f7ff", "#e6ffe6", "#fff0cc"];
     document.body.style.backgroundColor = colors[currentSlide];
+
+}
+function restartSlideshow() {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = 0;
+
+    slides[currentSlide].classList.add("active");
+
+    document.body.style.backgroundColor = "#ffe6f0";
 }
 
 </script>
