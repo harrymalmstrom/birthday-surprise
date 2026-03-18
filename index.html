@@ -154,8 +154,12 @@ function restartSlideshow() {
     slides[currentSlide].classList.add("active");
 
     document.body.style.backgroundColor = "#ffe6f0";
+    
     clearInterval(heartInterval);
     heartInterval = null;
+
+    const nextButton = document.querySelector("#slideshow > button");
+    nextButton.style.display = "block";
 }
 function createHeart() {
     const heart = document.createElement("div");
